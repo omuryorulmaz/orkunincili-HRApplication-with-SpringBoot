@@ -8,13 +8,13 @@ Applicants can apply for existing jobs. They can upload files if they want.
 
 ## Installation
 
-### Clone Application
+
 To the command line:
 ````
     git clone https://github.com/orkunincili/orkunincili-HRApplication-with-SpringBoot.git
 ````
 
-In the root directory of the project **(/orkunincili-HRApplication-with-SpringBoot/hrapp)** :
+After that while in the root directory of the project  **(/orkunincili-HRApplication-with-SpringBoot/hrapp)** :
 ````
   mvn install 
 ````
@@ -22,7 +22,7 @@ or
 ````
 sudo apt install maven
 ````
-After the installation is complete, you can run the project with this command line :
+When the installation is complete, you can run the project with this :
 ````
  mvn spring-boot:run
 ````
