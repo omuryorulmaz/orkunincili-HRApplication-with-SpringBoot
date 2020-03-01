@@ -1,6 +1,8 @@
 # Hr Application
 
-HR Application is a Spring Boot web application.The HR Manager can create new job,update or delete existing job. The HR manager can see the applicants and what job they apply for. 
+HR Application is a Spring Boot web application.
+
+The HR Manager can create new job,update or delete existing jobs also he/she can see applicants and what job they are applying for. 
 
 Applicants can apply for existing jobs. They can upload files if they want.
 
