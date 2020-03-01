@@ -17,4 +17,4 @@ After the installation is complete, you can run the project with this command li
 ````
  mvn spring-boot:run
 ````
-You can start using the HR Application when you connect to "localhost:8080" 
+You can start using the HR Application when you connect to **localhost:8080** 
