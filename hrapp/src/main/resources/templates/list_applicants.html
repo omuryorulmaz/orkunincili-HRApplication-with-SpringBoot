@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>List Applicant</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Kod Gemisi</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/hello">Ana Sayfa(İK)</a></li>
+            <li><a href="/manager-job-list">İlan Listesi</a></li>
+            <li><a href="/new">Yeni İş Oluştur</a></li>
+            <li><a href="/applicants">Başvurular</a></li>
+            <li style="margin-top: 5px"><form th:action="@{/logout}" method="post" th:align="center">
+                <input class="btn btn-primary" type="submit" value="Çıkış yap!"/>
+            </form></li>
+        </ul>
+    </div>
+</nav>
+
+   <h2 style="margin-left: 20px;">Applicant List</h2>
+   <hr>
+   <div th:if= "${length == 0}">
+       <h4 align="center" style="margin-top:20px">Henüz bir başvuru mevcut değil.</h4>
+   </div>
+<div th:if= "${length != 0}">
+        <div class="container" align="center">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>İsim</th>
+                    <th>Telefon</th>
+                    <th>Başvuru</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr th:each="applicant: ${listApplicants}">
+                    <td th:text="${applicant.name}"></td>
+                    <td th:text="${applicant.phone}"></td>
+                    <td th:text="${applicant.jobName}"></td>
+                    <td>
+                        <a th:href="@{'/applicant/' + ${applicant.id}}">See More</a>
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+</div>
+
+</body>
+</html>

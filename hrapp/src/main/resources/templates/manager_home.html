@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Manager Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Kod Gemisi</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/hello">Ana Sayfa(İK)</a></li>
+            <li><a href="/manager-job-list">İlan Listesi</a></li>
+            <li><a href="/new">Yeni İş Oluştur</a></li>
+            <li><a href="/applicants">Başvurular</a></li>
+            <li style="margin-top: 5px"><form th:action="@{/logout}" method="post" th:align="center">
+                <input class="btn btn-primary" type="submit" value="Çıkış yap!"/>
+            </form></li>
+        </ul>
+    </div>
+</nav>
+<h1 th:inline="text" align="center" style="margin-top: 100px">Hoşgeldin [[${#httpServletRequest.remoteUser}]]!</h1>
+<div th:if= "${length == 0}">
+    <h4 align="center" style="margin-top:20px">Aktif ilan bulunmuyor.
+        İlan oluşturmak için üst tarafta bulunan menüyü kullanabilirsiniz.</h4>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4" th:each="job:${listJobs}">
+            <h3 th:text="${job.jobTitle}">"</h3>
+            <p>Son başvuru tarihi: <span th:text="${job.lastDate}"></span></p>
+            <p th:text="${job.jobDescription}"></p>
+            <hr>
+            <p>Alınacak kişi sayısı: <span th:text="${job.numOfHire}"></span></p>
+            <a  class="btn btn-primary" th:href="@{'/edit/' + ${job.id}}">Güncelle</a>
+            <a  class="btn btn-warning" th:href="@{'/delete/' + ${job.id}}">Sil</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

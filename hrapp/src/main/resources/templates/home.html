@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:if="${'msg'}">
+    <span th:text="${msg}"></span>
+</div>
+<div class="jumbotron text-center">
+    <h1>Kod Gemisi'ne Hoş Geldiniz!</h1>
+    <a class="btn btn-primary" th:href="@{/hello}">İK Giriş</a>
+</div>
+<div th:if= "${length != 0}">
+    <h1 style="margin-left:20px">Başvurabileceğiniz ilanlarımız</h1>
+</div>
+
+<div th:if= "${length == 0}">
+   <h4 align="center" style="margin-top:20px">Aktif ilan bulunmuyor.
+       İleride açılabilecek diğer ilanlardan haberdar olmak için bizi Twitter'da takip edebilirsiniz.</h4>
+        <div th:align="center"><a class="btn btn-primary"  th:href="@{https://twitter.com/kodgemisi}">@kodgemisi</a></div>
+</div>
+    <div class="container">
+    <div class="row">
+        <div class="col-sm-4" th:each="job:${listJobs}">
+            <h3 th:text="${job.jobTitle}">"</h3>
+            <p>Son başvuru tarihi: <span th:text="${job.lastDate}"></span></p>
+            <p th:text="${job.jobDescription}"></p>
+            <hr>
+            <p>Alınacak kişi sayısı: <span th:text="${job.numOfHire}"></span></p>
+            <a class="btn btn-primary" th:href="@{'/apply/' + ${job.id}}">Hemen Başvur!</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>

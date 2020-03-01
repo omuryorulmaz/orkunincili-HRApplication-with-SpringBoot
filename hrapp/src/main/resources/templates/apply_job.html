@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Başvuru</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+        .card text-center{width:50%;margin:auto;margin-top:100px;}
+
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Kod Gemisi</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/hello">Anasayfa(İK) <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/manager-job-list">İlan Listesi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/new">İş Oluştur</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/applicants">Başvurular</a>
+            </li>
+            <li style="margin-top: 5px"><form th:action="@{/logout}" method="post" th:align="center">
+                <input class="btn btn-primary" type="submit" value="Çıkış yap!"/>
+            </form></li>
+
+        </ul>
+    </div>
+</nav>
+<div class="card text-center" style="width:50%;margin:auto;margin-top:100px;">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <span class="nav-link disabled">Alınacak Kişi Sayısı:</span>
+                        <span class="nav-link disabled" tabindex="-1" aria-disabled="true" th:text="${job.numOfHire}"></span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-link disabled">Son Başvuru Tarihi :</span>
+                        <span class="nav-link disabled" tabindex="-1" aria-disabled="true" th:text="${job.lastDate}"></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <h4 class="card-title" th:text="${job.jobTitle}"></h4>
+                <p class="card-text" th:text="${job.jobDescription}"></p>
+            </div>
+</div>
+
+<div class="container" align="center">
+    <h2>Başvuru Formu</h2>
+    <hr>
+    <form class="form-horizontal" th:action="@{/send}" th:object="${applicant}" method="post" enctype="multipart/form-data">
+        <div class="form-group" >
+            <label class="control-label col-sm-4">Pozisyon Adı: </label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" readonly="true" required="required" th:field="*{jobName}">
+            </div>
+        </div>
+        <div class="form-group" >
+            <label class="control-label col-sm-4">İsim: </label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" required="required" th:field="*{name}">
+            </div>
+        </div>
+        <div class="form-group" >
+            <label class="control-label col-sm-4">E-mail: </label>
+            <div class="col-sm-6">
+                <input type="email" class="form-control" required="required" th:field="*{email}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4">Gsm: </label>
+            <div class="col-sm-6">
+                <input type="number" class="form-control" required="required" th:field="*{phone}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4">Adres: </label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" required="required" th:field="*{address}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4">İş Hakkındaki Düşünceleriniz: </label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="thoughts" th:field="*{thoughts}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Diğer:</label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+            <p class="navbar-text">Dosyaların yükleneceği yer:'/hrapp/uploads'</p>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-6">
+                <button type="submit" class="btn btn-primary">Başvur</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
+

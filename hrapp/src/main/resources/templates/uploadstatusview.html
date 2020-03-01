@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Başvuru Başarılı</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+   <div th:align="center" th:if="${'msg'}" style="margin-top: 100px;">
+       <h1>KOD GEMİSİ</h1>
+       <hr>
+       <h2 th:text="${msg}"></h2>
+       <h3>Ana Sayfaya dönmek için <a href="/">tıklayınız.</a></h3>
+   </div>
+
+
+
+</body>
+</html>

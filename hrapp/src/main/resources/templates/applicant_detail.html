@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Applicant Detail Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        span{font-weight: bold;margin-left: 10px;}
+        .container{width:50%;margin:auto;margin-top:100px;}
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Kod Gemisi</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Ana Sayfa(İK)</a></li>
+            <li><a href="/manager-job-list">İlan Listesi</a></li>
+            <li><a href="/new">Yeni İş Oluştur</a></li>
+            <li><a href="/applicants">Başvurular</a></li>
+            <li style="margin-top: 5px"><form th:action="@{/logout}" method="post" th:align="center">
+                <input class="btn btn-primary" type="submit" value="Çıkış yap!"/>
+            </form></li>
+        </ul>
+    </div>
+</nav>
+        <div class="container">
+
+            <div class="panel panel-primary" th:object="${applicant}" >
+                <div class="panel-heading">Başvuran Detay</div>
+                <div>
+                   <span>ID:</span>
+                    <div class="panel-body" th:text="${applicant.id}"></div>
+                </div>
+                <div>
+                   <span>İsim:</span>
+                    <div class="panel-body" th:text="${applicant.name}"></div>
+                </div>
+                <div>
+                    <span>Telefon:</span>
+                    <div class="panel-body" th:text="${applicant.phone}"></div>
+                </div>
+                <div>
+                    <span>E-mail:</span>
+                    <div class="panel-body" th:text="${applicant.email}"></div>
+                </div>
+                <div>
+                    <span>Adres:</span>
+                    <div class="panel-body" th:text="${applicant.address}"></div>
+                </div>
+                <div>
+                    <span>Düşünceler: </span>
+                    <div class="panel-body" th:text="${applicant.thoughts}"></div>
+                </div>
+            </div>
+        </div>
+
+
+</body>
+</html>
+
