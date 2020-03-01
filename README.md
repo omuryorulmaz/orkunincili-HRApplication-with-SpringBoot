@@ -1,4 +1,4 @@
-# Hr Application
+# HR Application
 
 HR Application is a Spring Boot web application.
 
