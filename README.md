@@ -8,6 +8,12 @@ Applicants can apply for existing jobs. They can upload files if they want.
 
 ## Installation
 
+# Clone Application
+To the command line:
+````
+    git clone https://github.com/orkunincili/orkunincili-HRApplication-with-SpringBoot.git
+````
+
 In the root directory of the project **(/orkunincili-HRApplication-with-SpringBoot/hrapp)** :
 ````
   mvn install 
