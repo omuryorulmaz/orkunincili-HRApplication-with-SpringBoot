@@ -5,7 +5,7 @@ Applicants can apply for existing jobs. They can upload files if they want.
 
 ## Installation
 
-In the root directory of the project(/HrApplication/hrapp):
+In the root directory of the project **(/orkunincili-HRApplication-with-SpringBoot/hrapp)**:
 ````
   mvn install 
 ````
